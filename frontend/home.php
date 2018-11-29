@@ -422,7 +422,7 @@ button:hover {
 </style>
 </head>
 <body>
-  
+<div class="container-fluid">
   <div class="header">
     <div class="logo">
       <a href="home.html"><font color=#ff9918>CFF</font><font color=#81ab00>forums</font></a>
@@ -510,6 +510,8 @@ window.onclick = function(event) {
    
 
     <div class="col-md-8">
+
+
     <?php
   include_once("config.php");
 
@@ -518,15 +520,27 @@ window.onclick = function(event) {
   $threads = "";
   if(mysqli_num_rows($res) > 0){
     while($row = mysqli_fetch_assoc($res)){
-      $id = $row['ThreadID'];
+      $threadID = $row['ThreadID'];
       $title = $row['ThreadSubject'];
       $description = $row['ThreadDescription'];
       $viewcount = $row['ThreadViewsCount'];
       $votecount = $row['ThreadVoteCount'];
       $answercount = $row['ThreadAnswersCount'];
-      $threads .= "<div class='card mb-4'><div class='card-body'><h2 class='card-title'>".$title."</h2><a href='#' class='btn'>".$votecount."</a><a href='#' class='btn'>".$viewcount."</a><a href='#' class='btn'>".$answercount."</a><br><font size='-1'><p class='thread-button'>Votes&nbsp; Views&nbsp; Answers </p></font></div></div>";
+      $threads .= "<div class='card mb-4'>
+                    <div class='card-body'>  
+          <a href='specificquestion.php?cthreadID=".$threadID." class='card-title'>".$title."</a>
+          <a href='#' class='btn'>".$votecount."</a>
+          <a href='#' class='btn'>".$viewcount."</a>
+          <a href='#' class='btn'>".$answercount."</a>
+            <br>
+              <font size='-1'>
+          <p class='thread-button'>Votes&nbsp; Views&nbsp; Answers </p>
+               </font>
+                   </div>
+                    </div>";
     }
     echo $threads;
+
   }
    else {
      echo "<p>There are no threads available yet.</p>";
@@ -535,5 +549,6 @@ window.onclick = function(event) {
 
 <hr>
 
-      
+</div>      
 </body>
+</html>
