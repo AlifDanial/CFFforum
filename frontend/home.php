@@ -349,6 +349,7 @@ button:hover {
 .container {
     padding: 16px;
 }
+
 .col-md-8{
   margin-left:320px;
   maegin-right:320px;
@@ -492,12 +493,6 @@ window.onclick = function(event) {
     <div class="main">
     <h1 class="title">Your Feed</h1>
 
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-
 <div class="line"></div>
 
     <br />
@@ -514,8 +509,8 @@ window.onclick = function(event) {
 
     <?php
   include_once("config.php");
-
-  $sql = "SELECT * FROM thread ORDER BY ThreadID";
+  //to implement thread limit and next pages
+  $sql = "SELECT * FROM thread ORDER BY ThreadID LIMIT 7";
   $res = mysqli_query($link,$sql);
   $threads = "";
   if(mysqli_num_rows($res) > 0){
