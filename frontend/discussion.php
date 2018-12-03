@@ -8,6 +8,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     exit;
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <!-- Bootstrap core CSS -->
 <link href="bootstrap.min.css" rel="stylesheet">
 
+
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
 
 <style>
 * {
@@ -31,6 +34,15 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 /*  height: 200px;*/
 /*  background-size: auto;*/
 
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
 }
 
 .logo {
@@ -163,6 +175,11 @@ a {
     font-family: Arial;
     width:400px;
 }
+.thread-button{
+  padding-top:0px;
+  padding-left:0px;
+  margin-top:0px;
+}
 
 .sortbar ul{
   list-style-type: none;
@@ -171,24 +188,27 @@ a {
   overflow: hidden;
 } 
 
+.card-body1{
+  padding-left:200px;
+  margin-top:-62px;
+  margin-bottom:25px;
+}
+
+.card-body{
+  margin-top:-10px;
+}
 .sortbar li{
   list-style-type: none;
     display: inline-block;
     background-color: white;
     border: 1px solid #bbb;
-    width:100px;
-    font-size:15px;
+    width: 100px;
+    font-size: 15px;
 }
 
-
-.title{
-  position: relative;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 50px;
-  margin-top: -2%;
-  margin-left: -4%;
+.thread-container{
+  padding-left:510px;
 }
-
 .sortbar li a {
     display: block;
     color: black;
@@ -217,6 +237,9 @@ position: absolute;
   border: none;
 }
 
+.card-text{
+  font-size:20px;
+}
 .question{
   border: 1px solid #93bf00;
   width: 830px;
@@ -232,6 +255,12 @@ td {
   vertical-align: middle;
 }
 
+.btn{
+  text-align: center;
+  padding-left:0px;
+  padding-bottom:0px;
+  margin-bottom:0px;
+}
 .tag{
   border: 1px solid green;
   border-radius: 5px;
@@ -247,13 +276,30 @@ td {
   font-style: italic;
   display: inline-block;
   float: left;
-  color:black;
 }
 
 .tag:hover{
   opacity:1;
   background-color: #81ab00;
   color:white;
+}
+
+.a{
+  color:#44163C;
+}
+.thread-links{
+  display: block;
+  padding: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1 px solid #000023;
+  margin-bottom:5px;
+  background-color:#EEBAF2;
+}
+
+.thread-links:hover{
+  background-color:#F4BAB0;
+
 }
 
 h3{
@@ -313,6 +359,11 @@ button:hover {
     padding: 16px;
 }
 
+.col-md-8{
+  margin-left:320px;
+  margin-right:320px;
+}
+
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -334,6 +385,15 @@ button:hover {
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
     width: 50%; /* Could be more or less, depending on screen size */
+}
+
+.title{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 50px;
+  margin-top: -2%;
+  margin-left: -4%;
+
+
 }
 
 /* The Close Button (x) */
@@ -371,6 +431,7 @@ button:hover {
 </style>
 </head>
 <body>
+<div class="container-fluid">
   <div class="header">
     <div class="logo">
       <a href="home.html"><font color=#ff9918>CFF</font><font color=#81ab00>forums</font></a>
@@ -438,22 +499,7 @@ window.onclick = function(event) {
     </div>
 
     <div class="main">
-
-    <h1 class="title">Top Questions</h1>
-
-    <div class="sortbar">
-      <ul>
-        <li> <a href="#interesting" class="active">Interesting</a></li>
-        <li><a href="#recent">Recent</a></li>
-      </ul>
-    </div>
-
-
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
+    <h1 class="title">Your Feed</h1>
 
 <div class="line"></div>
 
@@ -461,74 +507,54 @@ window.onclick = function(event) {
     <br />
     <br />
     <br />
-
-
-    <table>
-      <tr>
-        <td><div class="question"><table>
-          <tr>
-            <td>
-              <h2>56</h2>
-              Votes
-            </td>
-            <td>
-              <h2>56</h2>
-              Answers
-            </td>
-            <td>
-              <h2>56</h2>
-              Views
-            </td>
-            <td>
-              <h3><a href="specificquestion.html">What is the protein content of a hibiscus in Semenyih, Malaysia?</a></h3>
-              <button type="button" class="tag">hibiscus</button><button type="button" class="tag">protein</button>
-          </tr>
-        </table></div></td>
-      </tr>
-
-      <tr>
-        <td><div class="question"><table>
-          <tr>
-            <td>
-              <h2>56</h2>
-              Votes
-            </td>
-            <td>
-              <h2>56</h2>
-              Answers
-            </td>
-            <td>
-              <h2>56</h2>
-              Views
-            </td>
-            <td>
-              <h3>What is the protein content of a hibiscus in Semenyih, Malaysia?</h3>
-              <button type="button" class="tag">hibiscus</button><button type="button" class="tag">protein</button>
-            </td>
-          </tr>
-        </table></div></td>
-      </tr>
-
-      <tr>
-        <td><div class="question"><table>
-          <tr>
-            <td>
-              <h2>56</h2>
-              Votes
-            </td>
-            <td>
-              <h2>56</h2>
-              Answers
-            </td>
-            <td>
-              <h2>56</h2>
-              Views
-            </td>
-            <td>
-              <h3>What is the protein content of a hibiscus in Semenyih, Malaysia?</h3>
-              <button type="button" class="tag">hibiscus</button><button type="button" class="tag">protein</button>
-        </table></div></td>
-      </tr>
-    </table>
+    
     </div>
+   
+   
+
+    <div class="col-md-8">
+
+
+    <?php
+  include_once("config.php");
+  //to implement thread limit and next pages
+  $sql = "SELECT * FROM thread ORDER BY ThreadID LIMIT 7";
+  $res = mysqli_query($link,$sql);
+  $threads = "";
+  if(mysqli_num_rows($res) > 0){
+    while($row = mysqli_fetch_assoc($res)){
+      $threadID = $row['ThreadID'];
+      $title = $row['ThreadSubject'];
+      $description = $row['ThreadDescription'];
+      $viewcount = $row['ThreadViewsCount'];
+      $votecount = $row['ThreadVoteCount'];
+      $answercount = $row['ThreadAnswersCount'];
+      $threads .= "<div class='card mb-4'>
+                    <div class='card-body'>  
+                    
+                    <a href='#' class='btn'>".$votecount."</a>
+                    <a href='#' class='btn'>".$viewcount."</a>
+                    <a href='#' class='btn'>".$answercount."</a> 
+                    <font size='-1'>
+          <p class='thread-button'>Votes&nbsp; Views&nbsp; Answers </p>
+               </font>
+               <div class='card-body1'>
+                  <h4><a href='specificquestion.php?cthreadID=".$threadID." class='card-title'>".$title."</a></h4>
+                </div>
+               </div>
+               
+                    </div>";
+    }
+    echo $threads;
+
+  }
+   else {
+     echo "<p>There are no threads available yet.</p>";
+   }?>
+   </div> <!-- end col-md-8 div-->
+
+<hr>
+
+</div>      
 </body>
+</html>
