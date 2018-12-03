@@ -44,39 +44,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </li>
     <li><div class="button" onclick="document.getElementById('id01').style.display='block'">Ask New Question</div></li>
 
-    <div id="id01" class="modal">
-  
-  <form class="modal-content animate" action="/action_page.php">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close">&times;</span>
-    </div>
-
-    <div class="container">
-     
-      <h2>Ask your question:</h2>
-      <br>
-      <form action="/action_page.php">
-      <textarea name="userquestion" rows="5" cols="88"></textarea>
-      <br>
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-    <button type="submit">Submit</button>
-    </div>
-  </form>
-</div>
-
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
     </ul>
     </div>  
 
@@ -152,5 +119,47 @@ window.onclick = function(event) {
 <hr>
 
 </div>      
+
+
+
+<div id="id01" class="modal">
+  
+  <form class="modal-content animate" action="/action_page.php">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close">&times;</span>
+    </div>
+
+    <div class="container">
+     
+      <h2>Ask your question:</h2>
+      <form action="/action_page.php">
+      <br>
+      <center>
+      <textarea name="questiontitle" placeholder="Title" rows="1" cols="60" style="font-size: 15px;"></textarea>
+      <br>
+      <br> 
+      <textarea name="questiontags" placeholder="Tags" rows="1" cols="60" style="font-size:15px;"></textarea>
+      <br>
+      <br>
+      <textarea name="userquestion" placeholder="Question" rows="5" cols="60" style="font-size:15px;"></textarea>
+      <br>
+    </center>
+
+    <button type="submit" width=100px>Submit</button>
+    </div>
+  </form>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>  
 </body>
 </html>
