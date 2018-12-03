@@ -129,7 +129,7 @@ h3{
 <body>
 	<div class="header">
 		<div class="logo">
-			<a href="home.html"><font color=#ff9918>CFF</font><font color=#81ab00>forums</font></a>
+			<a href="home.php"><font color=#ff9918>CFF</font><font color=#81ab00>forums</font></a>
 		</div>
 
 		<div class="navbar">
@@ -138,9 +138,9 @@ h3{
     
     </div>
     </li>
-			<li><a href="home.html" class=external>Home</a></li>
+			<li><a href="home.php" class=external>Home</a></li>
 			<li>Cropbase</li>
-			<li><a href="tags.html">Tags</a></li>
+			<li><a href="tags.php">Tags</a></li>
     </ul>
 		</div>	
 

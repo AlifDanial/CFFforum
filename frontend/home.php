@@ -434,7 +434,7 @@ button:hover {
 <div class="container-fluid">
   <div class="header">
     <div class="logo">
-      <a href="home.html"><font color=#ff9918>CFF</font><font color=#81ab00>forums</font></a>
+      <a href="home.php"><font color=#ff9918>CFF</font><font color=#81ab00>forums</font></a>
     </div>
 
     <div class="navbar">
@@ -484,7 +484,7 @@ window.onclick = function(event) {
     </ul>
     </div>  
 
-    <a href="profile.html"><img src="avatar.png" alt="Avatar" class="avatar"></a>
+    <a href="profile.php"><img src="avatar.png" alt="Avatar" class="avatar"></a>
     <img src="header.jpg" alt="header" width=100% height= 150px>
     </div>
 
