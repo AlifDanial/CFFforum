@@ -188,6 +188,15 @@ a {
   overflow: hidden;
 } 
 
+.card-body1{
+  padding-left:200px;
+  margin-top:-62px;
+  margin-bottom:25px;
+}
+
+.card-body{
+  margin-top:-10px;
+}
 .sortbar li{
   list-style-type: none;
     display: inline-block;
@@ -352,9 +361,8 @@ button:hover {
 
 .col-md-8{
   margin-left:320px;
-  maegin-right:320px;
+  margin-right:320px;
 }
-
 
 /* The Modal (background) */
 .modal {
@@ -523,15 +531,18 @@ window.onclick = function(event) {
       $answercount = $row['ThreadAnswersCount'];
       $threads .= "<div class='card mb-4'>
                     <div class='card-body'>  
-          <a href='specificquestion.php?cthreadID=".$threadID." class='card-title'>".$title."</a>
-          <a href='#' class='btn'>".$votecount."</a>
-          <a href='#' class='btn'>".$viewcount."</a>
-          <a href='#' class='btn'>".$answercount."</a>
-            <br>
-              <font size='-1'>
+                    
+                    <a href='#' class='btn'>".$votecount."</a>
+                    <a href='#' class='btn'>".$viewcount."</a>
+                    <a href='#' class='btn'>".$answercount."</a> 
+                    <font size='-1'>
           <p class='thread-button'>Votes&nbsp; Views&nbsp; Answers </p>
                </font>
-                   </div>
+               <div class='card-body1'>
+                  <h4><a href='specificquestion.php?cthreadID=".$threadID." class='card-title'>".$title."</a></h4>
+                </div>
+               </div>
+               
                     </div>";
     }
     echo $threads;
