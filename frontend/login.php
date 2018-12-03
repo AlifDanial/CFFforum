@@ -91,7 +91,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <!DOCTYPE html>
 <html>
 <head>
+    
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap core CSS -->
+<link href="bootstrap.min.css" rel="stylesheet">
+
 <style>
 * {
     box-sizing: border-box;
@@ -239,12 +244,12 @@ span.password {
     <br />
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
-                <input type="text" placeholder="EMAIL" name="email" value="<?php echo $email; ?>" required>
+                <input class="form-control" type="text" placeholder="EMAIL" name="email" value="<?php echo $email; ?>" required>
                 <span class="help-block"><?php echo $email_err; ?></span>
             </div> 
 
             <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <input type="password" placeholder="PASSWORD" name="password" required>
+                <input class="form-control"type="password" placeholder="PASSWORD" name="password" required>
                 <span class="help-block"><?php echo $password_err; ?></span>
             </div>
         
