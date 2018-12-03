@@ -526,7 +526,7 @@ window.onclick = function(event) {
 
     <div class="col-md-8">
         <?php
-        include_once("config.php");
+        include("config.php");
         $threadID = $_GET['cthreadID'];
 
         $sql = "SELECT * FROM thread WHERE ThreadID ='".$threadID."'";
@@ -544,20 +544,69 @@ window.onclick = function(event) {
                           <div class='card-body'>  
                 <h2 class='card-title'><font size='6'>".$title."</font></h2>                                          
                                 <hr/>
+                <p>".$votecount."</p>                                
                 <p class='card-text'>".$description."</p>
                   <br>
-                    <font size='-1'>
-                     </font>
                          </div>";
           }
           echo $threads;
-      
+         
         }
         else {
           echo "<a href='home.php'>Return to Home</a><hr />";
           echo "<p>There has been an error displaying this page.";
         }
         ?>
-      </div><!--"end col-md-8 div"-->
+ </div><!--"end col-md-8 div"-->
+        
+     <form method="post">
+       <input type="submit" name="upvote" id="upvote" value="Upvote"/>
+      </form>
     </div>
+
+    <?php
+
+if(array_key_exists('upvote',$_POST)){
+  upvote();
+}
+function upvote()
+{
+  
+$dbServername = "localhost";
+$dbUsername = "root";
+$dbPassword = "secret";
+$dbName = "cffforum";
+ 
+/* Attempt to connect to MySQL database */
+$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
+ 
+// Check connection
+if($conn === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
+}
+  
+	if(isset($_POST['upvote']))
+	{ 
+    $threadID = $_GET['cthreadID'];
+		
+      $sql1 = "SELECT ThreadVoteCount FROM thread WHERE ThreadID ='".$threadID."'";
+      $result = mysqli_query($conn,$sql1);
+      $vote = $result->fetch_assoc();
+      (int) $voteCount = $vote['ThreadVoteCount'];
+      $voteCount++;
+      
+      $sql2 = "UPDATE thread SET ThreadVoteCount = '".$voteCount."' WHERE ThreadID = '".$threadID."'";
+      $result = mysqli_query($conn,$sql2);
+      
+
+    }
+
+    
+  
+}
+
+
+
+
+?>
 </body>
