@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.7
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2018 at 08:40 AM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 7.2.2
+-- Generation Time: Dec 03, 2018 at 06:06 AM
+-- Server version: 10.1.36-MariaDB
+-- PHP Version: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -116,13 +116,13 @@ CREATE TABLE `crop_tag` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `forum`
+-- Table structure for table `crop_thread`
 --
 
-CREATE TABLE `forum` (
-  `ForumID` int(10) NOT NULL,
-  `ForumName` varchar(255) NOT NULL,
-  `ForumDescription` varchar(255) NOT NULL
+CREATE TABLE `crop_thread` (
+  `CropThreadID` int(11) NOT NULL,
+  `CropID` int(10) NOT NULL,
+  `ThreadID` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -133,7 +133,6 @@ CREATE TABLE `forum` (
 
 CREATE TABLE `moderator` (
   `ModeratorID` int(10) NOT NULL,
-  `ModeratorForumID` int(10) NOT NULL,
   `ModeratorPassword` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -201,7 +200,6 @@ CREATE TABLE `tag` (
 CREATE TABLE `thread` (
   `ThreadID` int(10) NOT NULL,
   `ThreadModeratorID` int(10) NOT NULL,
-  `ThreadForumID` int(10) NOT NULL,
   `ThreadUserID` int(10) NOT NULL,
   `ThreadSubject` varchar(255) NOT NULL,
   `ThreadDescription` varchar(500) NOT NULL,
@@ -210,17 +208,22 @@ CREATE TABLE `thread` (
   `ThreadSubscribeduserCount` int(10) NOT NULL,
   `ThreadViewsCount` int(10) NOT NULL,
   `ThreadAnswersCount` int(10) NOT NULL,
-  `ThreadDateCreated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `ThreadDateEdited` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `ThreadUserFlag` int(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `thread`
 --
 
-INSERT INTO `thread` (`ThreadID`, `ThreadModeratorID`, `ThreadForumID`, `ThreadUserID`, `ThreadSubject`, `ThreadDescription`, `ThreadVoteCount`, `ThreadSubscribedUserID`, `ThreadSubscribeduserCount`, `ThreadViewsCount`, `ThreadAnswersCount`, `ThreadDateCreated`, `ThreadDateEdited`) VALUES
-(1000, 0, 0, 8001, 'Hibisci are the bomb', 'Make sure to eat ur hibisci children', 203, 0, 0, 320, 400, '2018-11-27 12:04:19', '2018-11-27 12:05:00'),
-(1001, 0, 0, 0, 'Change my mind : Rafflesia are the bomb not hibisci', 'bruh i think rafflesia are the best flowers', 200, 0, 0, 250, 350, '2018-11-27 12:04:19', '2018-11-27 12:05:00');
+INSERT INTO `thread` (`ThreadID`, `ThreadModeratorID`, `ThreadUserID`, `ThreadSubject`, `ThreadDescription`, `ThreadVoteCount`, `ThreadSubscribedUserID`, `ThreadSubscribeduserCount`, `ThreadViewsCount`, `ThreadAnswersCount`, `ThreadUserFlag`) VALUES
+(1, 0, 0, 'What\'s a hibiscus?', 'I\'ve been having problems in understanding flowers, espescialy the hibiscus.', 648, 0, 0, 2000, 345, 1),
+(2, 0, 0, 'Rafflesia are cool', 'Change my mind Rafflesia are the OG compared to Hibisci', 613, 0, 0, 345, 265, 1),
+(3, 0, 0, 'Rose', 'Bruh, roses are da bomb. rafflesia are prone to extinction and who gives their date a hibisci?', 379, 0, 0, 457, 924, 1),
+(4, 0, 0, 'Sed ut perspiciatis unde omnis', ' natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore ma', 204, 0, 0, 457, 400, 1),
+(5, 0, 0, 'Section 1.10.32 of \"de Finibus Bonorum et Malorum\", written by Cicero in 45 BC', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi temp', 257, 0, 0, 12345, 12343565, NULL),
+(6, 0, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lorem justo, ornare eu malesuada in, varius nec lorem. Nam sed dictum sapien, a euismod dui. Nam enim felis, vehicula nec magna vel, fermentum euismod magna. Donec non orci dignissim augue cons', 'Ut sollicitudin massa nibh, nec egestas lorem ornare non. Curabitur at nibh imperdiet, maximus lorem ut, viverra justo. Etiam nec aliquet odio, sit amet sodales tortor. Nam efficitur consectetur sem, in interdum enim pulvinar sit amet. Quisque pulvinar mi eget purus molestie, ut luctus augue varius. Praesent eget lacinia tortor. Proin mauris sapien, molestie nec iaculis sit amet, pulvinar rhoncus massa. Curabitur ac ex quis lacus fringilla placerat.\r\n\r\nPhasellus vel odio nec ligula semper vehicu', 378, 0, 0, 204, 350, NULL),
+(7, 0, 0, 'Aenean dolor arcu, interdum non consectetur at, fringilla vel sapien. Morbi id velit varius, vulputate tortor in, imperdiet urna. Aliquam posuere tristique lacus, non mattis sapien volutpat in. Fusce ultricies nisi at libero dapibus egestas. Quisque in ni', 'Pellentesque sed metus tincidunt, elementum magna ac, lobortis est. Vestibulum eget eros varius, interdum magna at, tincidunt felis. Vivamus molestie, magna at varius sagittis, mi nisi tempus mauris, vitae tempor lorem nisl vitae lectus. Etiam ac magna ornare, ultricies purus in, feugiat nulla. Sed luctus vel orci ac auctor. Nam ut justo turpis. Morbi nisi leo, ullamcorper euismod accumsan ac, hendrerit et eros.\r\n\r\nAliquam erat volutpat. Maecenas euismod dignissim magna, quis gravida justo tinci', 6722, 0, 0, 1234, 1367, NULL),
+(8, 0, 0, 'Curabitur volutpat laoreet eros, elementum luctus ligula semper in. Nullam mollis leo ac magna laoreet, quis interdum eros maximus. Sed ante ante, mattis eget lobortis id, pretium et eros. Vivamus sed iaculis metus, euismod ultricies tortor. In orci lacus', 'Suspendisse non magna ac velit hendrerit blandit at id lectus. Donec scelerisque purus augue, a finibus leo accumsan eu. Nam id lorem odio. Ut malesuada, nisl at scelerisque rhoncus, dolor mi viverra dolor, a pellentesque orci magna ut nibh. Maecenas non nulla fermentum, dapibus felis ac, rutrum dui. Aenean mattis ipsum sed purus ultricies, ac laoreet neque pellentesque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut fringilla commodo ornare. Duis et ligula vitae ligula volutpat pos', 4777, 0, 0, 2346, 2136, NULL);
 
 -- --------------------------------------------------------
 
@@ -240,17 +243,15 @@ CREATE TABLE `users` (
   `UserLastLogin` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6),
   `UserEditProfileDate` int(10) NOT NULL,
   `UserAnswerCount` int(10) NOT NULL,
-  `UserSubscribedThreadsCount` int(10) NOT NULL,
-  `UserImage` longblob NOT NULL
+  `UserSubscribedThreadsCount` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`UserID`, `UserFirstName`, `UserLastName`, `UserEmail`, `UserPassword`, `UserOccupation`, `UserCountry`, `UserDateJoined`, `UserLastLogin`, `UserEditProfileDate`, `UserAnswerCount`, `UserSubscribedThreadsCount`, `UserImage`) VALUES
-(8001, 'Alif', 'Danial', 'alifdanial1655@gmail.com', '$2y$10$aBd6bLjYBmxQgpJpw0rR6.AIhboe8yeE/G/wtoHm4646gCHvQMYKe', 'Computer Scientist', '', '2018-11-23 09:43:46.847283', '2018-11-29 15:28:29.000000', 0, 0, 0, ''),
-(8002, 'aaron', 'kin kit', 'aaron@email', '$2y$10$W7MKAG6clz9wpNNe5WQ5NeRp.g67bjMZ7y.2K5tOFyj7I9onfYi0G', 'cs', '', '2018-11-27 10:06:47.267199', '2018-11-29 15:28:29.000000', 0, 0, 0, '');
+INSERT INTO `users` (`UserID`, `UserFirstName`, `UserLastName`, `UserEmail`, `UserPassword`, `UserOccupation`, `UserCountry`, `UserDateJoined`, `UserLastLogin`, `UserEditProfileDate`, `UserAnswerCount`, `UserSubscribedThreadsCount`) VALUES
+(2, 'Alif', 'Danial', 'alif@email', '$2y$10$mO1WnccW5hcnEimlJ7ynT.9.EhuYkuLcKFMVNYkQPhryDKnznWPT2', 'Computer Scientist', '', '2018-11-25 18:39:39.409865', '2018-12-03 12:36:33.000000', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -308,13 +309,17 @@ ALTER TABLE `cropattribute_tag`
 -- Indexes for table `crop_tag`
 --
 ALTER TABLE `crop_tag`
-  ADD PRIMARY KEY (`CropTagID`);
+  ADD PRIMARY KEY (`CropTagID`),
+  ADD KEY `CropID` (`CropID`),
+  ADD KEY `TagID` (`TagID`);
 
 --
--- Indexes for table `forum`
+-- Indexes for table `crop_thread`
 --
-ALTER TABLE `forum`
-  ADD PRIMARY KEY (`ForumID`);
+ALTER TABLE `crop_thread`
+  ADD PRIMARY KEY (`CropThreadID`),
+  ADD KEY `CropID_2` (`CropID`),
+  ADD KEY `ThreadID` (`ThreadID`);
 
 --
 -- Indexes for table `moderator`
@@ -332,13 +337,17 @@ ALTER TABLE `reply`
 -- Indexes for table `reply_user`
 --
 ALTER TABLE `reply_user`
-  ADD PRIMARY KEY (`ReplyUserID`);
+  ADD PRIMARY KEY (`ReplyUserID`),
+  ADD KEY `ReplyID` (`ReplyID`),
+  ADD KEY `UserID` (`UserID`);
 
 --
 -- Indexes for table `subscribed_thread_user`
 --
 ALTER TABLE `subscribed_thread_user`
-  ADD PRIMARY KEY (`SubscribedThreadID`);
+  ADD PRIMARY KEY (`SubscribedThreadID`),
+  ADD KEY `ThreadID` (`ThreadID`),
+  ADD KEY `UserID` (`UserID`);
 
 --
 -- Indexes for table `tag`
@@ -362,23 +371,70 @@ ALTER TABLE `users`
 -- Indexes for table `user_thread`
 --
 ALTER TABLE `user_thread`
-  ADD PRIMARY KEY (`UserThreadID`);
+  ADD PRIMARY KEY (`UserThreadID`),
+  ADD UNIQUE KEY `UserID` (`UserID`) USING BTREE,
+  ADD KEY `ThreadID` (`ThreadID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `thread`
+-- AUTO_INCREMENT for table `crop_thread`
 --
-ALTER TABLE `thread`
-  MODIFY `ThreadID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1002;
+ALTER TABLE `crop_thread`
+  MODIFY `CropThreadID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8003;
+  MODIFY `UserID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `user_thread`
+--
+ALTER TABLE `user_thread`
+  MODIFY `UserThreadID` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `crop_tag`
+--
+ALTER TABLE `crop_tag`
+  ADD CONSTRAINT `crop_tag_ibfk_1` FOREIGN KEY (`CropID`) REFERENCES `crop` (`CropID`),
+  ADD CONSTRAINT `crop_tag_ibfk_2` FOREIGN KEY (`TagID`) REFERENCES `tag` (`TagID`);
+
+--
+-- Constraints for table `crop_thread`
+--
+ALTER TABLE `crop_thread`
+  ADD CONSTRAINT `crop_thread_ibfk_1` FOREIGN KEY (`CropID`) REFERENCES `crop` (`CropID`),
+  ADD CONSTRAINT `crop_thread_ibfk_2` FOREIGN KEY (`ThreadID`) REFERENCES `thread` (`ThreadID`);
+
+--
+-- Constraints for table `reply_user`
+--
+ALTER TABLE `reply_user`
+  ADD CONSTRAINT `reply_user_ibfk_1` FOREIGN KEY (`ReplyID`) REFERENCES `reply` (`ReplyID`),
+  ADD CONSTRAINT `reply_user_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`);
+
+--
+-- Constraints for table `subscribed_thread_user`
+--
+ALTER TABLE `subscribed_thread_user`
+  ADD CONSTRAINT `subscribed_thread_user_ibfk_1` FOREIGN KEY (`ThreadID`) REFERENCES `thread` (`ThreadID`),
+  ADD CONSTRAINT `subscribed_thread_user_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`);
+
+--
+-- Constraints for table `user_thread`
+--
+ALTER TABLE `user_thread`
+  ADD CONSTRAINT `user_thread_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `users` (`UserID`),
+  ADD CONSTRAINT `user_thread_ibfk_2` FOREIGN KEY (`ThreadID`) REFERENCES `thread` (`ThreadID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
