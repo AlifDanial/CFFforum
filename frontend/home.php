@@ -71,14 +71,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <br />
     <br />
     <br />
-    
     </div>
-   
-   
-
+  
     <div class="col-md-8">
-
-
     <?php
   include_once("config.php");
   //to implement thread limit and next pages
@@ -93,21 +88,34 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
       $viewcount = $row['ThreadViewsCount'];
       $votecount = $row['ThreadVoteCount'];
       $answercount = $row['ThreadAnswersCount'];
-      $threads .= "<div class='card mb-4'>
-                    <div class='card-body'>  
-                    
-                    <a href='#' class='btn'>".$votecount."</a>
-                    <a href='#' class='btn'>".$viewcount."</a>
-                    <a href='#' class='btn'>".$answercount."</a> 
+      $threads .= "
+              <div class='card mb-4'>
+                <div class='card-body '>  
+                  <div class='row'>
+
+                      <div class='text-center col-md-0 pl-2 pt-1'>
+                    <a href='#' class='text-center btn disabled pl-1 pr-1' text-align='center'>".$votecount."</a>
+                    <p class='thread-button pl-1 pr-1'>Votes</p>
+                      </div>
+                      <div class='text-center col-md-0 pl-2 pt-1 '>
+                    <a href='#' class='btn disabled pl-1 pr-1'>".$viewcount."</a>
+                    <p class='thread-button pl-1 pr-1'>Views</p>
+                      </div>
+                      <div class='text-center col-md-0 pl-2 pt-1'>
+                    <a href='#' class='btn disabled pl-1 pr-1'>".$answercount."</a> 
+                    <p class='thread-button pl-1 pr-1'>Answers</p>
+                      </div>
+
+                  </div>
+
                     <font size='-1'>
-          <p class='thread-button'>Votes&nbsp; Views&nbsp; Answers </p>
-               </font>
-               <div class='card-body1'>
-                  <h4><a href='specificquestion.php?cthreadID=".$threadID." class='card-title'>".$title."</a></h4>
+                    <!--<p class='thread-button'>Votes&nbsp; Views&nbsp; Answers </p>-->
+                    </font>
+                    <div class='card-body1 pt-1 pb-0'>
+                        <h4><a href='specificquestion.php?cthreadID=".$threadID." class='btn disabled'>".$title."</a></h4>
+                            </div>
                 </div>
-               </div>
-               
-                    </div>";
+             </div>";
     }
     echo $threads;
 

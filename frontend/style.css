@@ -165,14 +165,11 @@ a {
 } 
 
 .card-body1{
-  padding-left:200px;
+  padding-left:300px;
   margin-top:-62px;
   margin-bottom:25px;
 }
 
-.card-body{
-  margin-top:-10px;
-}
 .sortbar li{
   list-style-type: none;
     display: inline-block;
@@ -231,12 +228,7 @@ td {
   vertical-align: middle;
 }
 
-.btn{
-  text-align: center;
-  padding-left:0px;
-  padding-bottom:0px;
-  margin-bottom:0px;
-}
+
 .tag{
   border: 1px solid green;
   border-radius: 5px;
@@ -628,12 +620,6 @@ text-align: center;
 vertical-align: middle;
 }
 
-.btn{
-text-align: center;
-padding-left:0px;
-padding-bottom:0px;
-margin-bottom:0px;
-}
 .tag{
 border: 1px solid green;
 border-radius: 5px;
