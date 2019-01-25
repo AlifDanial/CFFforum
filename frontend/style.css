@@ -1,3 +1,4 @@
+
 * {
     box-sizing: border-box;
 }
@@ -10,9 +11,6 @@
 /*  height: 200px;*/
 /*  background-size: auto;*/
 
-body {
-  padding-top: 54px;
-}
 
 @media (min-width: 992px) {
   body {
@@ -105,30 +103,6 @@ a {
     height: 50px;
     border-radius: 50%;
     z-index: 1;
-}
-
-.sidenav {
-    width: 200px;
-    position: fixed;
-    z-index: 1;
-    top: 200px;
-    left: 30px;
-    background: transparent;
-    overflow-x: hidden;
-    padding: 10px 10px;
-}
-
-.sidenav a {
-    padding: 10px 20px 10px 20px;
-    font-family: arial;
-    text-decoration: bold;
-    font-size: 20px;
-    color: black;
-    display: block;
-}
-
-.sidenav a:hover {
-    color: grey;
 }
 
 .main {
@@ -356,12 +330,10 @@ button:hover {
 }
 
 .title{
-  font-family: 'Montserrat', sans-serif;
-  font-size: 50px;
+  font-family: 'Montserra', sans-serif;
+  font-size: 45px;
   margin-top: -2%;
   margin-left: -4%;
-
-
 }
 
 /* The Close Button (x) */
@@ -408,9 +380,6 @@ right: 0;
 /*  height: 200px;*/
 /*  background-size: auto;*/
 
-body {
-padding-top: 54px;
-}
 
 @media (min-width: 992px) {
 body {
@@ -494,7 +463,9 @@ background: #ccc;
 .button:hover {
   opacity: 0.8;
 }
-
+.nav-link{
+  font-family: 'Montserrat', sans-serif;
+}
 .avatar {
 position:absolute;
   top: 17%;
@@ -504,31 +475,6 @@ position:absolute;
   border-radius: 50%;
   z-index: 1;
 }
-
-.sidenav {
-  width: 200px;
-  position: fixed;
-  z-index: 1;
-  top: 200px;
-  left: 30px;
-  background: transparent;
-  overflow-x: hidden;
-  padding: 10px 10px;
-}
-
-.sidenav a {
-  padding: 10px 20px 10px 20px;
-  font-family: arial;
-  text-decoration: bold;
-  font-size: 20px;
-  color: black;
-  display: block;
-}
-
-.sidenav a:hover {
-  color: grey;
-}
-
 .main {
 position: relative;
   top: 30%;
@@ -744,15 +690,6 @@ maegin-right:320px;
   margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
   border: 1px solid #888;
   width: 50%; /* Could be more or less, depending on screen size */
-}
-
-.title{
-font-family: 'Montserrat', sans-serif;
-font-size: 50px;
-margin-top: -2%;
-margin-left: -4%;
-
-
 }
 
 /* The Close Button (x) */
