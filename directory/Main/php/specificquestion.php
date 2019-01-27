@@ -103,6 +103,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 </style>
 </head>
 <body>
+<div class="container-fluid">
   <div class="header">
     <div class="logo">
       <a href="home.php" style="text-decoration:none;"><font color=#ff9918>CFF</font><font color=#81ab00>forums</font></a>
@@ -208,9 +209,6 @@ if($conn === false){
     
   
 }
-
-
-
-
 ?>
+<div class="container-fluid">
 </body>

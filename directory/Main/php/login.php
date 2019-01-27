@@ -225,7 +225,7 @@ span.password {
 <div class="row">
 
   <div class="column1">
-    <img src="Picture1.png" width=100% height=100%>
+    <img src="../../resources/img/Picture1.png" width=100% height=100%>
     <div class="centered">
       <h1>WELCOME TO CFFforums</h1>
       <p>Join our community of scientists and academics from around the globe</p>
@@ -237,7 +237,7 @@ span.password {
     <div class="container">
     <center>
 
-    <img src="logo.jpg">
+    <img src="../../resources/img/logo.jpg">
 
     <br />
     <br />

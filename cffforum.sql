@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2018 at 06:06 AM
+-- Generation Time: Jan 27, 2019 at 06:08 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -208,22 +208,22 @@ CREATE TABLE `thread` (
   `ThreadSubscribeduserCount` int(10) NOT NULL,
   `ThreadViewsCount` int(10) NOT NULL,
   `ThreadAnswersCount` int(10) NOT NULL,
-  `ThreadUserFlag` int(1) DEFAULT NULL
+  `ThreadCreatedDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `thread`
 --
 
-INSERT INTO `thread` (`ThreadID`, `ThreadModeratorID`, `ThreadUserID`, `ThreadSubject`, `ThreadDescription`, `ThreadVoteCount`, `ThreadSubscribedUserID`, `ThreadSubscribeduserCount`, `ThreadViewsCount`, `ThreadAnswersCount`, `ThreadUserFlag`) VALUES
-(1, 0, 0, 'What\'s a hibiscus?', 'I\'ve been having problems in understanding flowers, espescialy the hibiscus.', 648, 0, 0, 2000, 345, 1),
-(2, 0, 0, 'Rafflesia are cool', 'Change my mind Rafflesia are the OG compared to Hibisci', 613, 0, 0, 345, 265, 1),
-(3, 0, 0, 'Rose', 'Bruh, roses are da bomb. rafflesia are prone to extinction and who gives their date a hibisci?', 379, 0, 0, 457, 924, 1),
-(4, 0, 0, 'Sed ut perspiciatis unde omnis', ' natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore ma', 204, 0, 0, 457, 400, 1),
-(5, 0, 0, 'Section 1.10.32 of \"de Finibus Bonorum et Malorum\", written by Cicero in 45 BC', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi temp', 257, 0, 0, 12345, 12343565, NULL),
-(6, 0, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lorem justo, ornare eu malesuada in, varius nec lorem. Nam sed dictum sapien, a euismod dui. Nam enim felis, vehicula nec magna vel, fermentum euismod magna. Donec non orci dignissim augue cons', 'Ut sollicitudin massa nibh, nec egestas lorem ornare non. Curabitur at nibh imperdiet, maximus lorem ut, viverra justo. Etiam nec aliquet odio, sit amet sodales tortor. Nam efficitur consectetur sem, in interdum enim pulvinar sit amet. Quisque pulvinar mi eget purus molestie, ut luctus augue varius. Praesent eget lacinia tortor. Proin mauris sapien, molestie nec iaculis sit amet, pulvinar rhoncus massa. Curabitur ac ex quis lacus fringilla placerat.\r\n\r\nPhasellus vel odio nec ligula semper vehicu', 378, 0, 0, 204, 350, NULL),
-(7, 0, 0, 'Aenean dolor arcu, interdum non consectetur at, fringilla vel sapien. Morbi id velit varius, vulputate tortor in, imperdiet urna. Aliquam posuere tristique lacus, non mattis sapien volutpat in. Fusce ultricies nisi at libero dapibus egestas. Quisque in ni', 'Pellentesque sed metus tincidunt, elementum magna ac, lobortis est. Vestibulum eget eros varius, interdum magna at, tincidunt felis. Vivamus molestie, magna at varius sagittis, mi nisi tempus mauris, vitae tempor lorem nisl vitae lectus. Etiam ac magna ornare, ultricies purus in, feugiat nulla. Sed luctus vel orci ac auctor. Nam ut justo turpis. Morbi nisi leo, ullamcorper euismod accumsan ac, hendrerit et eros.\r\n\r\nAliquam erat volutpat. Maecenas euismod dignissim magna, quis gravida justo tinci', 6722, 0, 0, 1234, 1367, NULL),
-(8, 0, 0, 'Curabitur volutpat laoreet eros, elementum luctus ligula semper in. Nullam mollis leo ac magna laoreet, quis interdum eros maximus. Sed ante ante, mattis eget lobortis id, pretium et eros. Vivamus sed iaculis metus, euismod ultricies tortor. In orci lacus', 'Suspendisse non magna ac velit hendrerit blandit at id lectus. Donec scelerisque purus augue, a finibus leo accumsan eu. Nam id lorem odio. Ut malesuada, nisl at scelerisque rhoncus, dolor mi viverra dolor, a pellentesque orci magna ut nibh. Maecenas non nulla fermentum, dapibus felis ac, rutrum dui. Aenean mattis ipsum sed purus ultricies, ac laoreet neque pellentesque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut fringilla commodo ornare. Duis et ligula vitae ligula volutpat pos', 4777, 0, 0, 2346, 2136, NULL);
+INSERT INTO `thread` (`ThreadID`, `ThreadModeratorID`, `ThreadUserID`, `ThreadSubject`, `ThreadDescription`, `ThreadVoteCount`, `ThreadSubscribedUserID`, `ThreadSubscribeduserCount`, `ThreadViewsCount`, `ThreadAnswersCount`, `ThreadCreatedDate`) VALUES
+(1, 0, 0, 'What\'s a hibiscus?', 'I\'ve been having problems in understanding flowers, espescialy the hibiscus.', 685, 0, 0, 2000, 345, '2019-01-26 14:39:51'),
+(2, 0, 0, 'Rafflesia are cool', 'Change my mind Rafflesia are the OG compared to Hibisci', 614, 0, 0, 345, 265, '2019-01-26 14:39:51'),
+(3, 0, 0, 'Rose', 'Bruh, roses are da bomb. rafflesia are prone to extinction and who gives their date a hibisci?', 379, 0, 0, 457, 924, '2019-01-26 14:39:51'),
+(4, 0, 0, 'Sed ut perspiciatis unde omnis', ' natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore ma', 209, 0, 0, 457, 400, '2019-01-26 14:39:51'),
+(5, 0, 0, 'Section 1.10.32 of \"de Finibus Bonorum et Malorum\", written by Cicero in 45 BC', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi temp', 261, 0, 0, 12345, 12343565, '2019-01-26 14:39:51'),
+(6, 0, 0, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lorem justo, ornare eu malesuada in, varius nec lorem. Nam sed dictum sapien, a euismod dui. Nam enim felis, vehicula nec magna vel, fermentum euismod magna. Donec non orci dignissim augue cons', 'Ut sollicitudin massa nibh, nec egestas lorem ornare non. Curabitur at nibh imperdiet, maximus lorem ut, viverra justo. Etiam nec aliquet odio, sit amet sodales tortor. Nam efficitur consectetur sem, in interdum enim pulvinar sit amet. Quisque pulvinar mi eget purus molestie, ut luctus augue varius. Praesent eget lacinia tortor. Proin mauris sapien, molestie nec iaculis sit amet, pulvinar rhoncus massa. Curabitur ac ex quis lacus fringilla placerat.\r\n\r\nPhasellus vel odio nec ligula semper vehicu', 378, 0, 0, 204, 350, '2019-01-26 14:39:51'),
+(7, 0, 0, 'Aenean dolor arcu, interdum non consectetur at, fringilla vel sapien. Morbi id velit varius, vulputate tortor in, imperdiet urna. Aliquam posuere tristique lacus, non mattis sapien volutpat in. Fusce ultricies nisi at libero dapibus egestas. Quisque in ni', 'Pellentesque sed metus tincidunt, elementum magna ac, lobortis est. Vestibulum eget eros varius, interdum magna at, tincidunt felis. Vivamus molestie, magna at varius sagittis, mi nisi tempus mauris, vitae tempor lorem nisl vitae lectus. Etiam ac magna ornare, ultricies purus in, feugiat nulla. Sed luctus vel orci ac auctor. Nam ut justo turpis. Morbi nisi leo, ullamcorper euismod accumsan ac, hendrerit et eros.\r\n\r\nAliquam erat volutpat. Maecenas euismod dignissim magna, quis gravida justo tinci', 6722, 0, 0, 1234, 1367, '2019-01-26 14:39:51'),
+(8, 0, 0, 'Curabitur volutpat laoreet eros, elementum luctus ligula semper in. Nullam mollis leo ac magna laoreet, quis interdum eros maximus. Sed ante ante, mattis eget lobortis id, pretium et eros. Vivamus sed iaculis metus, euismod ultricies tortor. In orci lacus', 'Suspendisse non magna ac velit hendrerit blandit at id lectus. Donec scelerisque purus augue, a finibus leo accumsan eu. Nam id lorem odio. Ut malesuada, nisl at scelerisque rhoncus, dolor mi viverra dolor, a pellentesque orci magna ut nibh. Maecenas non nulla fermentum, dapibus felis ac, rutrum dui. Aenean mattis ipsum sed purus ultricies, ac laoreet neque pellentesque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut fringilla commodo ornare. Duis et ligula vitae ligula volutpat pos', 4777, 0, 0, 2346, 2136, '2019-01-26 14:39:51');
 
 -- --------------------------------------------------------
 
@@ -251,7 +251,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UserID`, `UserFirstName`, `UserLastName`, `UserEmail`, `UserPassword`, `UserOccupation`, `UserCountry`, `UserDateJoined`, `UserLastLogin`, `UserEditProfileDate`, `UserAnswerCount`, `UserSubscribedThreadsCount`) VALUES
-(2, 'Alif', 'Danial', 'alif@email', '$2y$10$mO1WnccW5hcnEimlJ7ynT.9.EhuYkuLcKFMVNYkQPhryDKnznWPT2', 'Computer Scientist', '', '2018-11-25 18:39:39.409865', '2018-12-03 12:36:33.000000', 0, 0, 0);
+(2, 'Alif', 'Danial', 'alif@email', '$2y$10$mO1WnccW5hcnEimlJ7ynT.9.EhuYkuLcKFMVNYkQPhryDKnznWPT2', 'Computer Scientist', '', '2018-11-25 18:39:39.409865', '2018-12-03 12:36:33.000000', 0, 0, 0),
+(3, 'Alif', 'Danial', 'aldmnsri@gmail.com', '$2y$10$Y/u.1QZr112Bn4dIvF4G6.KE3pqSwPiEyA2sLv8E7AhnHyC5GPdRW', 'Computer Scientist', '', '2019-01-22 23:29:44.149838', '2019-01-27 10:12:04.000000', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -389,7 +390,7 @@ ALTER TABLE `crop_thread`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `UserID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user_thread`

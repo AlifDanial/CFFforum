@@ -269,7 +269,7 @@ a{
   <div class="container">
     
     <p><font size="2px">Sign up to continue</font></p>
-    <img src="logo.jpg">
+    <img src="../../resources/img/logo.jpg">
     </div>
    
     
