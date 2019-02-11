@@ -17,10 +17,10 @@ $uid = $_SESSION["id"];
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Bootstrap core CSS -->
-<link href="bootstrap.min.css" rel="stylesheet">
+<link href="../../resources/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-<link href="style1.css" rel="stylesheet">
+<link href="../../resources/css/style1.css" rel="stylesheet">
 
 <style>
 .card{
@@ -123,9 +123,9 @@ $uid = $_SESSION["id"];
       <a href="home.php" style='text-decoration: none'><font color=#ff9918>CFF</font><font color=#81ab00>forums</font></a>
   </div>
 
-    <a href="profile.php"><img src="avatar.png" alt="Avatar" class="avatar"></a>
+    <a href="profile.php"><img src="../../resources/img/avatar.png" alt="Avatar" class="avatar"></a>
   <div class='container-1'>
-    <img src="navbar-x2.png" alt="header" width=100% height=300px>
+    <img src="../../resources/img/navbar-x2.png" alt="header" width=100% height=300px>
   </div>
   </div><br />
 
@@ -141,15 +141,16 @@ $uid = $_SESSION["id"];
     <div class="main-body">
     <div class="form-group">
 
-      <form action="create_question.php" method="post">
+      <form action="question.php" method="post">
         <p class="text1-left" >Question Title</p>
           <input name="question_title" class="form-control form-control-lg"  type="text" placeholder="Enter Title Here">
         <p class="text2-left" >Question Description</p>
           <textarea name="question_content" class="form-control form-control-lg"  id="exampleFormControlTextarea1" rows="7" placeholder="Enter Description"></textarea>
     </div>
-          <div class="submit-button">
-        <input type="hidden" name="uid" value="<?php echo $uid; ?>">
-        <button type="submit" name="question_submit"class="btn btn-primary mb-2">Submit Question</button></div>
+      <div class="submit-button">
+        <input type="hidden" name="uid" value="<?php echo $uid ?>">
+        <button type="submit" name="question_submit" class="btn btn-primary mb-2">Submit Question</button>
+        </div>
     </form>
       </div>
 

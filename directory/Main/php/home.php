@@ -19,7 +19,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <link href="../../resources/css/style1.css" rel="stylesheet">
-
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js" integrity="sha384-zDnhMsjVZfS3hiP7oCBRmfjkQC4fzxVxFhBx8Hkz2aZX8gEvA/jsP3eXRCvzTofP" crossorigin="anonymous"></script>
 <style>
 .card{
   border-width:1.4px;
@@ -87,6 +87,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   padding-top:200px;
   padding-bottom:0px;
 }
+.searchbar{
+  position:absolute;
+  left: 20%;
+  top: 14.5%;
+  
+}
 </style>
 </head>
 <body>
@@ -95,29 +101,22 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <div class="logo">
       <a href="home.php" style='text-decoration: none'><font color=#ff9918>CFF</font><font color=#81ab00>forums</font></a>
     </div>
-<!--
-  <div class="navbar">
-    <ul>
-      <li>
-        <div class="search-container">
-          <form>
-            <input type="text" placeholder="Search topics or keywords" name="search">
-              <button class="btn btn-lg btn-success" type="submit">Search</button>
-          </form>
-        </div>
-      </li>
-      <li>
-        <div class="button" onclick="document.getElementById('id01').style.display='block'">
-        Ask New Question
-        </div>
-      </li>
-    </ul>
-  </div>  
--->
+  
     <a href="profile.php"><img src="../../resources/img/avatar.png" alt="Avatar" class="avatar"></a>
     <div class='container-1'>
+    <div class="searchbar">
+      <form action="search.php" method="post">
+		    <input type="text" id="searchBar" placeholder="Search..." value="" maxlength="25" autocomplete="off" onmousedown="" onblur=""/>
+          <div>
+		        <button type="button" class="btn btn-default">
+      				<span>Search</span> 
+    	      </button>
+          </div>
+	    </form>	
+  </div>
     <img src="../../resources/img/navbar-x2.png" alt="header" width=100% height=300px>
-</div>
+    
+</div> <!--  end container-1-->
     </div>
 
     <br />
@@ -135,14 +134,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
     <div class="btn-group btn-group-toggle" data-toggle="buttons">
   <label class="btn btn-secondary active">
-    <input type="radio" name="options" id="option1" autocomplete="off" checked> Recent
-  </label>
+    <input type="radio" name="options" id="option1" autocomplete="off" checked> Recent </label>
   <label class="btn btn-secondary">
-    <input type="radio" name="options" id="option2" autocomplete="off"> Featured
-  </label>
+    <input type="radio" name="options" id="option2" autocomplete="off"> Featured </label>
   <label class="btn btn-secondary">
-    <input type="radio" name="options" id="option3" autocomplete="off"> Hot
-  </label>
+    <input type="radio" name="options" id="option3" autocomplete="off"> Hot </label>
 </div>
 
     <div class="line">
@@ -204,7 +200,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 <hr>
 
-</div>      
+</div> <!--end container fluid -->      
 
 
 <div id="id01" class="modal">

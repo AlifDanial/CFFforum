@@ -7,6 +7,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +35,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   font-size: 23px;
   font-weight: bold;
   padding-left: 15px;
-  text-align: right;
+  text-align: left;
   color: rgb(0, 0, 0);
 }
 .card-link{
@@ -133,7 +134,8 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <?php
         include("config.php");
         $threadID = $_GET['cthreadID'];
-
+        mysqli_query($link,"SELECT * FROM thread");
+        mysqli_query($link,"UPDATE thread SET ThreadViewsCount = ThreadViewsCount + 1 WHERE ThreadID = '".$threadID."'");
         $sql = "SELECT * FROM thread WHERE ThreadID ='".$threadID."'";
         $res = mysqli_query($link,$sql);
         $threads = "";
@@ -147,12 +149,24 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             $answercount = $row['ThreadAnswersCount'];
             $threads .= "
                           <div class='card-body'>  
-                <h2 class='card-title'><font size='6'>".$title."</font></h2>                                          
-                                <hr/>
-                <p>".$votecount."</p>                                
-                <p class='card-text'>".$description."</p>
-                  <br>
-                         </div>";
+                            <h2 class='card-title'><font size='6'>".$title."</font></h2>                                          
+                  <hr/>   
+                  <div class='row'>
+                      <div class='text-center col-md-0 pl-3 pt-1'>
+                        <p>".$votecount."</p>
+                        <p class='thread-button pl-1 pr-1' style='font-size:14px;'>Votes</p>
+                      </div> 
+                      <div class='text-center col-md-0 pl-3 pt-1'>
+                        <p>".$viewcount."</p>
+                        <p class='thread-button pl-1 pr-1' style='font-size:14px;'>Views</p>
+                      </div>
+                      <div class='text-center col-md-0 pl-3 pt-1'>
+                        <p>".$answercount."</p>
+                        <p class='thread-button pl-1 pr-1' style='font-size:14px;'>Answers</p>
+                      </div>     
+                  </div>                               
+                        <p class='card-text'>".$description."</p><br>
+                          </div>";
           }
           echo $threads;
          

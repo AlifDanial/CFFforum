@@ -208,7 +208,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 <div id="id01" class="modal">
   
-  <form class="modal-content animate" action="/action_page.php">
+  <form class="modal-content animate" action="/new_question.php">
     <div class="imgcontainer">
       <span onclick="document.getElementById('id01').style.display='none'" class="close">&times;</span>
     </div>
@@ -216,7 +216,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <div class="container">
      
       <h2>Ask your question:</h2>
-      <form action="/action_page.php">
+      <form action="/new_question.php">
       <br>
       <center>
       <textarea name="questiontitle" placeholder="Title" rows="1" cols="60" style="font-size: 15px;"></textarea>
