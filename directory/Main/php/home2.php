@@ -134,7 +134,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </div>
 
     <div class="main-body">
-    <h1 class="text1" style="font-size:40px;font-family: 'Montserrat', sans-serif;font-size: 40px;padding-bottom:40px;">Recent Questions</h1>
+    <h1 class="text1" style="font-size:40px;font-family: 'Montserrat', sans-serif;font-size: 40px;padding-bottom:40px;">Top Questions</h1>
     <div class="askbutton">
       <button type="button" onclick=" relocate_home()" class="btn btn-warning">Ask a Question</button>
     </div>
@@ -145,9 +145,15 @@ function relocate_home()
 } 
 </script>
     <div class="btn-group btn-group-toggle" data-toggle="buttons">
-  <label class="btn btn-outline-success active">
-    <input type="radio" name="options" id="option1" autocomplete="off" checked> Recent </label>
   <label class="btn btn-outline-dark">
+    <input type="radio" onclick=" relocate_home1()" name="options" id="option1" autocomplete="off" checked> Recent </label>
+    <script>
+function relocate_home1()
+{
+     location.href = "home.php";
+} 
+</script>
+  <label class="btn btn-outline-success active">
     <input type="radio" onclick=" relocate_home2()" name="options" id="option2" autocomplete="off"> Featured </label>
     <script>
 function relocate_home2()
@@ -156,7 +162,7 @@ function relocate_home2()
 } 
 </script>
   <label class="btn btn-outline-dark">
-  <input type="radio" onclick=" relocate_home3()" name="options" id="option3" autocomplete="off"> Hot </label>
+    <input type="radio" onclick=" relocate_home3()" name="options" id="option3" autocomplete="off"> Hot </label>
     <script>
 function relocate_home3()
 {
@@ -175,7 +181,7 @@ function relocate_home3()
     <?php
   include_once("config.php");
   //to implement thread limit and next pages
-  $sql = "SELECT * FROM thread ORDER BY ThreadID DESC";
+  $sql = "SELECT * FROM thread ORDER BY ThreadVoteCount DESC";
   $res = mysqli_query($link,$sql);
   $threads = "";
   if(mysqli_num_rows($res) > 0){

@@ -7,7 +7,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
 }
-
+$uid = $_SESSION["id"];
 ?>
 
 <!DOCTYPE html>
@@ -101,6 +101,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   padding-top:200px;
   padding-bottom:0px;
 }
+.col1{
+  padding-left:4%;
+}
+.col2{
+  padding-left:1%;
+}
 </style>
 </head>
 <body>
@@ -121,7 +127,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
     <div class="nav-bar">
       <a href="home.php" class="nav-link">Home</a>
-      <a href="discussion.php" class="nav-link">Discussions</a>
       <a href="crops.php" class="nav-link">Crops</a>
       <a href="tags.php" class="nav-link">Tags</a>
       <a href="logout.php" class="nav-link">Logout</a>
@@ -177,17 +182,27 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         }
         ?>
  </div><!--"end col-md-8 div"-->
-        
+ <div class="row">    
+        <div class="col1">
      <form method="post">
-       <input type="submit" name="upvote" id="upvote" value="Upvote"/>
+       <input type="submit" class="btn btn-success" name="upvote" id="upvote" value="Upvote"/>
       </form>
-    </div>
+      </div>
 
-    <?php
+      <div class="col2">
+     <form method="post">
+       <input type="submit" class="btn btn-danger" name="downvote" id="upvote" value="Downvote"/>
+      </form>
+      </div>
+      </div><!--end row -->
+    </div><!--end main body-->
+
+<?php
 
 if(array_key_exists('upvote',$_POST)){
   upvote();
 }
+
 function upvote()
 {
   
@@ -204,15 +219,56 @@ if($conn === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
   
-	if(isset($_POST['upvote']))
-	{ 
+  if(isset($_POST['upvote']))
+  { 
     $threadID = $_GET['cthreadID'];
-		
+
+      $sql3 = "SELECT ThreadVoterID FROM thread_votes WHERE ThreadID ='".$threadID."'";
+      $check = mysqli_query($conn,$sql3);
+      if($check){
+        exit;
+      }
       $sql1 = "SELECT ThreadVoteCount FROM thread WHERE ThreadID ='".$threadID."'";
       $result = mysqli_query($conn,$sql1);
       $vote = $result->fetch_assoc();
       (int) $voteCount = $vote['ThreadVoteCount'];
       $voteCount++;
+      
+      $sql2 = "UPDATE thread SET ThreadVoteCount = '".$voteCount."' WHERE ThreadID = '".$threadID."'";
+      $result = mysqli_query($conn,$sql2);
+
+  }
+}
+
+
+if(array_key_exists('downvote',$_POST)){
+  downvote();
+}
+function downvote()
+{
+  
+$dbServername = "localhost";
+$dbUsername = "root";
+$dbPassword = "secret";
+$dbName = "cffforum";
+ 
+/* Attempt to connect to MySQL database */
+$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
+ 
+// Check connection
+if($conn === false){
+    die("ERROR: Could not connect. " . mysqli_connect_error());
+}
+  
+  if(isset($_POST['downvote']))
+  { 
+    $threadID = $_GET['cthreadID'];
+    
+      $sql1 = "SELECT ThreadVoteCount FROM thread WHERE ThreadID ='".$threadID."'";
+      $result = mysqli_query($conn,$sql1);
+      $vote = $result->fetch_assoc();
+      (int) $voteCount = $vote['ThreadVoteCount'];
+      $voteCount--;
       
       $sql2 = "UPDATE thread SET ThreadVoteCount = '".$voteCount."' WHERE ThreadID = '".$threadID."'";
       $result = mysqli_query($conn,$sql2);
@@ -224,5 +280,5 @@ if($conn === false){
   
 }
 ?>
-<div class="container-fluid">
+</div>
 </body>

@@ -10,7 +10,7 @@
         $result = mysqli_query($link,"INSERT into thread (ThreadSubject,ThreadDescription,ThreadUserID) VALUES ('".$title."','".$content."','".$uid."')");
         mysqli_close($link);
         if($result){
-            echo "success";
+            header("location: home.php");
         }
         else{
             echo "Error Please Try Again Later";
