@@ -222,12 +222,20 @@ if($conn === false){
   if(isset($_POST['upvote']))
   { 
     $threadID = $_GET['cthreadID'];
+    $uid = $_SESSION["id"];
 
-      $sql3 = "SELECT ThreadVoterID FROM thread_votes WHERE ThreadID ='".$threadID."'";
+      $sql3 = "SELECT ThreadVoterID FROM thread_votes WHERE ThreadID ='".$threadID."' And ThreadVoterID = '".$uid."'";
       $check = mysqli_query($conn,$sql3);
-      if($check){
+      $voterid = $check->fetch_assoc();
+      (int) $VoterID = $voterid['ThreadVoterID'];
+
+      if($VoterID == $uid ){
         exit;
       }
+
+      $sql4 = "UPDATE thread_votes SET ThreadVoterID = '".$uid."' WHERE ThreadID = '".$threadID."'";
+      $check1 = mysqli_query($conn,$sql4);
+      
       $sql1 = "SELECT ThreadVoteCount FROM thread WHERE ThreadID ='".$threadID."'";
       $result = mysqli_query($conn,$sql1);
       $vote = $result->fetch_assoc();
