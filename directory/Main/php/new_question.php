@@ -143,9 +143,9 @@ $uid = $_SESSION["id"];
 
       <form action="question.php" method="post">
         <p class="text1-left" >Question Title</p>
-          <input name="question_title" class="form-control form-control-lg"  type="text" placeholder="Enter Title Here">
+          <input name="question_title" class="form-control form-control-lg"  maxlength="255" type="text" placeholder="Enter Title Here">
         <p class="text2-left" >Question Description</p>
-          <textarea name="question_content" class="form-control form-control-lg"  id="exampleFormControlTextarea1" rows="7" placeholder="Enter Description"></textarea>
+          <textarea name="question_content" class="form-control form-control-lg" maxlength="500" id="exampleFormControlTextarea1" rows="7" placeholder="Enter Description"></textarea>
     </div>
       <div class="submit-button">
         <input type="hidden" name="uid" value="<?php echo $uid ?>">

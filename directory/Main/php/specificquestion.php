@@ -18,6 +18,7 @@ $uid = $_SESSION["id"];
 <!-- Bootstrap core CSS -->
 <link href="../../resources/css/bootstrap.min.css" rel="stylesheet">
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
@@ -30,13 +31,17 @@ $uid = $_SESSION["id"];
   .card{
   border-width:1.4px;
 }
-.card-title{
+.card-title1{
   font-family: 'Montserrat', sans-serif;
+  width:130%;
   font-size: 23px;
   font-weight: bold;
   padding-left: 15px;
   text-align: left;
   color: rgb(0, 0, 0);
+  margin-top: -7%;
+  margin-left: 0%;
+  margin-bottom: 3%;
 }
 .card-link{
   font-family: 'Montserrat', sans-serif;
@@ -45,8 +50,8 @@ $uid = $_SESSION["id"];
 .thread-button{
   font-family: 'Montserrat', sans-serif;
 }
-.card-body1{
-  padding-left:210px;
+.card-body{
+  width:100%;
 }
 .nav-bar{
   width: 200px;
@@ -107,6 +112,17 @@ $uid = $_SESSION["id"];
 .col2{
   padding-left:1%;
 }
+.votes{
+  font-size:20px;
+  position:relative;
+  right:30px;
+  bottom:27px;
+}
+.card-text{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  padding-left:14px;  
+}
 </style>
 </head>
 <body>
@@ -154,13 +170,15 @@ $uid = $_SESSION["id"];
             $answercount = $row['ThreadAnswersCount'];
             $threads .= "
                           <div class='card-body'>  
-                            <h2 class='card-title'><font size='6'>".$title."</font></h2>                                          
+                            <h2 class='card-title1'><font size='6'>".$title."</font></h2>                                          
                   <hr/>   
                   <div class='row'>
-                      <div class='text-center col-md-0 pl-3 pt-1'>
-                        <p>".$votecount."</p>
-                        <p class='thread-button pl-1 pr-1' style='font-size:14px;'>Votes</p>
-                      </div> 
+                      <div>
+                        <p class='votes'>".$votecount."</p>
+                        <!--<p class='thread-button pl-1 pr-1' style='font-size:14px;'>Votes</p>-->
+                      </div>
+
+                      <!--
                       <div class='text-center col-md-0 pl-3 pt-1'>
                         <p>".$viewcount."</p>
                         <p class='thread-button pl-1 pr-1' style='font-size:14px;'>Views</p>
@@ -168,7 +186,7 @@ $uid = $_SESSION["id"];
                       <div class='text-center col-md-0 pl-3 pt-1'>
                         <p>".$answercount."</p>
                         <p class='thread-button pl-1 pr-1' style='font-size:14px;'>Answers</p>
-                      </div>     
+                      </div> -->
                   </div>                               
                         <p class='card-text'>".$description."</p><br>
                           </div>";
@@ -182,7 +200,7 @@ $uid = $_SESSION["id"];
         }
         ?>
  </div><!--"end col-md-8 div"-->
- <div class="row">    
+ <div class="row">
         <div class="col1">
      <form method="post">
        <input type="submit" class="btn btn-success" name="upvote" id="upvote" value="Upvote"/>
@@ -208,7 +226,7 @@ function upvote()
   
 $dbServername = "localhost";
 $dbUsername = "root";
-$dbPassword = "secret";
+$dbPassword = "";
 $dbName = "cffforum";
  
 /* Attempt to connect to MySQL database */
@@ -224,17 +242,23 @@ if($conn === false){
     $threadID = $_GET['cthreadID'];
     $uid = $_SESSION["id"];
 
+      //retrieve value of voterid through threadid value in thread_votes table
       $sql3 = "SELECT ThreadVoterID FROM thread_votes WHERE ThreadID ='".$threadID."' And ThreadVoterID = '".$uid."'";
       $check = mysqli_query($conn,$sql3);
       $voterid = $check->fetch_assoc();
       (int) $VoterID = $voterid['ThreadVoterID'];
 
-      if($VoterID == $uid ){
+      //exit upvote() if user has voted post before
+      if($VoterID == $uid){
         exit;
       }
-
-      $sql4 = "UPDATE thread_votes SET ThreadVoterID = '".$uid."' WHERE ThreadID = '".$threadID."'";
-      $check1 = mysqli_query($conn,$sql4);
+      
+      //insert into thread_votes table threadid and threadvoterid when upvote button clicked
+      mysqli_query($conn,"SELECT ThreadID,ThreadVoterID From thread_votes Where ThreadVoterID = '".$VoterID."' And ThreadID = '".$threadID."'");
+        $result1 = mysqli_query($conn,"INSERT INTO thread_votes (ThreadID,ThreadVoterID) VALUES ('".$threadID."','".$uid."')");
+      
+      //update upvote value only if thread_votes table is updated.
+      if($result1){
       
       $sql1 = "SELECT ThreadVoteCount FROM thread WHERE ThreadID ='".$threadID."'";
       $result = mysqli_query($conn,$sql1);
@@ -244,7 +268,7 @@ if($conn === false){
       
       $sql2 = "UPDATE thread SET ThreadVoteCount = '".$voteCount."' WHERE ThreadID = '".$threadID."'";
       $result = mysqli_query($conn,$sql2);
-
+      }
   }
 }
 
@@ -257,7 +281,7 @@ function downvote()
   
 $dbServername = "localhost";
 $dbUsername = "root";
-$dbPassword = "secret";
+$dbPassword = "";
 $dbName = "cffforum";
  
 /* Attempt to connect to MySQL database */

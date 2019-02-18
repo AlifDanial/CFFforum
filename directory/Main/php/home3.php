@@ -19,18 +19,17 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <link href="../../resources/css/style1.css" rel="stylesheet">
-<link href="../../resources/css/hamburgers.css" rel="stylesheet">
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js" integrity="sha384-zDnhMsjVZfS3hiP7oCBRmfjkQC4fzxVxFhBx8Hkz2aZX8gEvA/jsP3eXRCvzTofP" crossorigin="anonymous"></script>
 <style>
 .body{width:100%;}
 .card{
   border-width:1.4px;
 }
-.card-title{
+.card-title1{
   font-family: 'Montserrat', sans-serif;
   font-size: 23px;
   font-weight: bold;
-  padding-left: 15px;
+  
   text-align: right;
   color: rgb(0, 0, 0);
 }
@@ -95,7 +94,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   top: 14.5%; 
 }
 .askbutton{
-  width:9%;
+  width:10%;
 
 
 }
@@ -216,7 +215,7 @@ function relocate_home3()
                     <!--<p class='thread-button'>Votes&nbsp; Views&nbsp; Answers </p>-->
                     </font>
                     <div class='card-body1 pt-0 pb-0 '>
-                        <h4><a href='specificquestion.php?cthreadID=".$threadID." '' class='card-title' style='text-decoration: none' >".$title."</a></h4>
+                        <h4><a href='specificquestion.php?cthreadID=".$threadID." '' class='card-title1' style='text-decoration: none' >".$title."</a></h4>
                             </div>
                 </div>
              </div>";
