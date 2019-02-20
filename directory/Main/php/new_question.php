@@ -132,7 +132,6 @@ $uid = $_SESSION["id"];
 
     <div class="nav-bar">
       <a href="home.php" class="nav-link" >Home</a>
-      <a href="discussion.php" class="nav-link">Discussions</a>
       <a href="crops.php" class="nav-link">Crops</a>
       <a href="tags.php" class="nav-link">Tags</a>
       <a href="logout.php" class="nav-link">Logout</a>

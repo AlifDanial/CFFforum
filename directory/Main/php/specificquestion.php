@@ -38,12 +38,6 @@ $uid = $_SESSION["id"];
   width:130%;
   font-size: 23px;
   font-weight: bold;
-  padding-left: 15px;
-  text-align: left;
-  color: rgb(0, 0, 0);
-  margin-top: -7%;
-  margin-left: 0%;
-  margin-bottom: 3%;
 }
 .card-link{
   font-family: 'Montserrat', sans-serif;
@@ -54,6 +48,7 @@ $uid = $_SESSION["id"];
 }
 .card-body{
   width:100%;
+  height:100%;
 }
 .nav-bar{
   width: 200px;
@@ -96,18 +91,14 @@ $uid = $_SESSION["id"];
   padding-right:-200px;
 }
 .main-body{
-  padding-left:340px;
+  padding-left:20%;
   padding-top:200px;
-  padding-bottom:0px;
+  
 }
   .btn-group{
   padding-left:990px;
 }
-.main-body{
-  padding-left:340px;
-  padding-top:200px;
-  padding-bottom:0px;
-}
+
 .col1{
   padding-left:4%;
 }
@@ -125,9 +116,12 @@ $uid = $_SESSION["id"];
   font-family: 'Montserrat', sans-serif;
   font-size: 20px;
   position: relative;
-  right:4px;
   bottom:40px;
+  padding-bottom:0px;
   width:110%;
+}
+.container-fluid{
+  height:500%;
 }
 </style>
 </head>
@@ -141,7 +135,7 @@ $uid = $_SESSION["id"];
 
     <a href="profile.php"><img src="../../resources/img/avatar.png" alt="Avatar" class="avatar"></a>
     <div class='container-1'>
-    <img src="../../resources/img/navbar-x2.png" alt="header" width=100% height=300px>
+        <img src="../../resources/img/navbar-x2.png" alt="header" width=100% height=300px>
       </div>
     </div>
 
@@ -154,7 +148,6 @@ $uid = $_SESSION["id"];
       <a href="logout.php" class="nav-link">Logout</a>
     </div>
 
-    <hr />
     <div class="main-body">
     <div class="col-md-8">
         <?php
@@ -219,6 +212,21 @@ $uid = $_SESSION["id"];
       </form>
       </div>
       </div><!--end row -->
+<!--
+        <div class="comment1">
+        <div class="form-group">
+
+      <form action="question.php" method="post">
+        <p class="text2-left" >Your Answer</p>
+          <textarea name="question_content" class="form-control form-control-lg" maxlength="500" id="exampleFormControlTextarea1" rows="7" placeholder="Enter Description"></textarea>
+    </div>
+      <div class="submit-button">
+        <input type="hidden" name="uid" value="<?php echo $uid ?>">
+        <button type="submit" name="question_submit" class="btn btn-primary mb-2">Submit Question</button>
+        </div>
+    </form>
+        </div>-->
+
     </div><!--end main body-->
 <?php
 
@@ -231,7 +239,7 @@ function upvote()
   
 $dbServername = "localhost";
 $dbUsername = "root";
-$dbPassword = "secret";
+$dbPassword = "";
 $dbName = "cffforum";
  
 /* Attempt to connect to MySQL database */
@@ -286,7 +294,7 @@ function downvote()
   
 $dbServername = "localhost";
 $dbUsername = "root";
-$dbPassword = "secret";
+$dbPassword = "";
 $dbName = "cffforum";
  
 /* Attempt to connect to MySQL database */
@@ -326,15 +334,11 @@ if($conn === false){
         $result = mysqli_query($conn,$sql2);
 
       }
-    
-      
-      
-
-    }
-
-    
-  
+  }
 }
 ?>
+<div class="footer">
+</div>
 </div>
 </body>
+</html>

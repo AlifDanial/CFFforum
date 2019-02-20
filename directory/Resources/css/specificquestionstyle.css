@@ -189,7 +189,7 @@ position: absolute;
 }
 
 .question{
-  border: 1px solid #93bf00;
+  border: 1px solid black;
   width: 830px;
   height: 150px;
   /*padding: 100px 100px;*/
@@ -238,7 +238,7 @@ h3{
 }
 
 .question{
-  border: 1px solid #93bf00;
+  border: 1px solid black;
   width: 830px;
   height: 150px;
   /*padding: 100px 100px;*/
@@ -247,7 +247,7 @@ h3{
 }
 
 .comment{
-  border: 1px solid #93bf00;
+  
   width: 800px;
   height: auto;
   min-height: 50px;
@@ -257,7 +257,7 @@ h3{
 }
 
 .reply{
-  border: 1px solid #93bf00;
+  border: 1px solid black;
   width: 770px;
   height: auto;
   min-height: 50px;

@@ -93,7 +93,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   top: 14.5%; 
 }
 .askbutton{
-  width:10%;
+  width:130px;
 
 
 }
@@ -108,16 +108,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   
     <a href="profile.php"><img src="../../resources/img/avatar.png" alt="Avatar" class="avatar"></a>
     <div class='container-1'>
-    <div class="searchbar">
-      <form action="search.php" method="post">
-		    <input type="text" id="searchBar" placeholder="Search..." value="" maxlength="25" autocomplete="off" onmousedown="" onblur=""/>
-          <div>
-		        <button type="button" class="btn btn-default">
-      				<span>Search</span> 
-    	      </button>
-          </div>
-	    </form>	
-  </div>
+    
     <img src="../../resources/img/navbar-x2.png" alt="header" width=100% height=300px>
     
 </div> <!--  end container-1-->
