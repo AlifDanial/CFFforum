@@ -91,7 +91,7 @@ $uid = $_SESSION["id"];
   padding-right:-200px;
 }
 .main-body{
-  padding-left:20%;
+  padding-left:280px;
   padding-top:200px;
   
 }
@@ -118,10 +118,30 @@ $uid = $_SESSION["id"];
   position: relative;
   bottom:40px;
   padding-bottom:0px;
-  width:110%;
+  width:120%;
 }
 .container-fluid{
   height:500%;
+}
+.submit-button{
+  width:150px;
+  float:right;
+}
+.text1-left{
+  font-family: 'Montserrat', sans-serif;
+  font-size:20px;
+  font-weight:bold;
+}
+
+.text2-left{
+  padding-top:30px;
+  font-family: 'Montserrat', sans-serif;
+  font-size:23px;
+  font-weight:bold;
+}
+.answer-space{
+  padding:100px;
+
 }
 </style>
 </head>
@@ -186,7 +206,7 @@ $uid = $_SESSION["id"];
                         <p>".$answercount."</p>
                         <p class='thread-button pl-1 pr-1' style='font-size:14px;'>Answers</p>
                       </div> -->
-                                                
+
                         <p class='card-text'>".$description."</p><br>
                           </div>";
           }
@@ -212,21 +232,54 @@ $uid = $_SESSION["id"];
       </form>
       </div>
       </div><!--end row -->
-<!--
-        <div class="comment1">
+
+      <div class="answer-space">
+      <div class="col-md-8">
+        <?php
+        $sql = "SELECT * FROM answer WHERE ThreadID ='".$threadID."'";
+        $res = mysqli_query($link,$sql);
+        $threads = "";
+        if(mysqli_num_rows($res) > 0){
+          while($row = mysqli_fetch_assoc($res)){
+            $threadID = $row['ThreadID'];
+            $title = $row['AnswerContent'];
+            $threads .= "
+            <div class='card border-success mb-4 '>
+            <div class='card-body'>  
+                <div class='card-body1 pt-0 pb-0 '>
+                    <h4 class='card-title1' style='text-decoration: none' >".$title."</h4>
+                        </div>
+            </div>
+         </div>
+                          ";
+          }
+          echo $threads;
+         
+        }
+        else {
+          echo "<a href='home.php'>Return to Home</a><hr />";
+          echo "<p>There has been an error displaying this page.";
+        }
+        ?>
+ </div><!--"end col-md-8 div"-->
+
+
+      </div>
+
+        <div class="col-lg-9">
         <div class="form-group">
 
-      <form action="question.php" method="post">
+      <form action="answer.php" method="post">
         <p class="text2-left" >Your Answer</p>
-          <textarea name="question_content" class="form-control form-control-lg" maxlength="500" id="exampleFormControlTextarea1" rows="7" placeholder="Enter Description"></textarea>
+          <textarea name="answer_content" class="form-control" maxlength="500" id="exampleFormControlTextarea1" rows="8" placeholder="Enter Description"></textarea>
     </div>
       <div class="submit-button">
         <input type="hidden" name="uid" value="<?php echo $uid ?>">
+        <input type="hidden" name="threadid" value="<?php echo $threadID ?>">
         <button type="submit" name="question_submit" class="btn btn-primary mb-2">Submit Question</button>
         </div>
     </form>
-        </div>-->
-
+        </div>
     </div><!--end main body-->
 <?php
 

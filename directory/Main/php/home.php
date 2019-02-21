@@ -94,8 +94,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 }
 .askbutton{
   width:130px;
-
-
+}
+.col-md-8{
+  padding-top:140px;
+  margin-left:20%;
+  margin-right:20%;
+  height:90%;
 }
 </style>
 </head>
